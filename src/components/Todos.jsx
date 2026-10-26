@@ -6,6 +6,8 @@ function Todos() {
 
   const [text, setText] = useState('')
 
+  const itemsLeft = todos.filter((todo) => !todo.completed).length
+
   function handleSubmit(e) {
     e.preventDefault()
 
@@ -95,7 +97,10 @@ function Todos() {
             </main>
 
             <footer className="grid h-10 grid-cols-3 items-center border-t border-[#e6e6e6] px-[15px] text-[15px]">
-              <span><strong className="font-light">1</strong> item left</span>
+              <span>
+                <strong className="font-light">{itemsLeft}</strong>{' '}
+                {itemsLeft === 1 ? 'item' : 'items'} left
+              </span>
 
               <ul className="flex items-center justify-center gap-2">
                 <li className="cursor-pointer rounded-[3px] border border-[#b83f45]/20 px-[7px] py-[3px]">All</li>
